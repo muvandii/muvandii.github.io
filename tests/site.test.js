@@ -1,6 +1,6 @@
 /**
  * Unit tests for the portfolio's documentation system core (site.js).
- * Run with:  node --test tests/
+ * Run with:  node --test        (from the repository root)
  */
 'use strict';
 
@@ -199,4 +199,98 @@ test('slugify', () => {
   assert.equal(P.slugify('Module 01 — Data Ingestion'), 'module-01-data-ingestion');
   assert.equal(P.slugify('Hello, World!'), 'hello-world');
   assert.equal(P.slugify(''), '');
+});
+
+/* ------------------------------------------------------------------
+ * Registry normalization: top-level owner/defaultBranch must be
+ * inherited by every project entry (regression: raw URLs were being
+ * built as .../undefined/<repo>/... so nothing ever loaded).
+ * ------------------------------------------------------------------ */
+
+test('normalizeRegistry: inherits top-level owner and defaultBranch', () => {
+  const reg = P.normalizeRegistry({
+    owner: 'muvandii',
+    defaultBranch: 'main',
+    projects: [{ id: 'p1', repo: 'Project_01' }]
+  });
+  assert.equal(reg.projects[0].owner, 'muvandii');
+  assert.equal(reg.projects[0].branch, 'main');
+  assert.equal(
+    P.docUrl(reg.projects[0], 'project.md'),
+    'https://raw.githubusercontent.com/muvandii/Project_01/main/documentation/project.md'
+  );
+});
+
+test('normalizeRegistry: per-project owner/branch override the defaults', () => {
+  const reg = P.normalizeRegistry({
+    owner: 'muvandii',
+    defaultBranch: 'main',
+    projects: [{ id: 'p', repo: 'r', owner: 'someone', branch: 'dev' }]
+  });
+  assert.equal(reg.projects[0].owner, 'someone');
+  assert.equal(reg.projects[0].branch, 'dev');
+});
+
+test('normalizeRegistry: id defaults to repo name, demo entries survive', () => {
+  const reg = P.normalizeRegistry({
+    owner: 'muvandii',
+    projects: [
+      { repo: 'My_Repo' },
+      { localRoot: 'templates/project-repository', id: 'demo', demo: true }
+    ]
+  });
+  assert.equal(reg.projects[0].id, 'My_Repo');
+  assert.equal(reg.projects[0].branch, 'main'); // defaultBranch fallback
+  assert.equal(reg.projects[1].id, 'demo');
+  assert.equal(reg.projects[1].owner, undefined); // local sources need no owner
+});
+
+test('normalizeRegistry: drops entries with no resolvable source', () => {
+  const reg = P.normalizeRegistry({ owner: '', projects: [{ id: 'broken' }] });
+  assert.equal(reg.projects.length, 0);
+});
+
+/* ------------------------------------------------------------------
+ * Metadata derived from the body when project.md has no frontmatter.
+ * ------------------------------------------------------------------ */
+
+test('deriveMetaFromBody: uses first H1 as title and strips it from the body', () => {
+  const md = '# PROJECT 1: RETAIL SALES CONSOLIDATION\n\nA consolidation project.\n\n## Overview\n';
+  const { meta, body } = P.parseFrontmatter(md);
+  const out = P.deriveMetaFromBody(meta, body);
+  assert.equal(out.meta.title, 'PROJECT 1: RETAIL SALES CONSOLIDATION');
+  assert.equal(out.meta.summary, 'A consolidation project.');
+  assert.ok(!out.body.startsWith('# '));
+  assert.ok(out.body.startsWith('A consolidation project.'));
+  assert.equal(out.derived.title, true);
+});
+
+test('deriveMetaFromBody: frontmatter always wins over the body', () => {
+  const md = '---\ntitle: Real Title\nsummary: Real summary.\n---\n\n# Ignored Heading\n\nIgnored text.\n';
+  const { meta, body } = P.parseFrontmatter(md);
+  const out = P.deriveMetaFromBody(meta, body);
+  assert.equal(out.meta.title, 'Real Title');
+  assert.equal(out.meta.summary, 'Real summary.');
+  assert.equal(out.body, body); // untouched
+});
+
+test('deriveMetaFromBody: summary skips tables, lists and rules', () => {
+  const md = '# Title\n\n---\n\n- bullet\n\nThe actual first paragraph.\n';
+  const { meta, body } = P.parseFrontmatter(md);
+  const out = P.deriveMetaFromBody(meta, body);
+  assert.equal(out.meta.summary, 'The actual first paragraph.');
+});
+
+test('deriveMetaFromBody: strips markdown syntax out of the summary', () => {
+  const md = '# T\n\nUses **Power Query** and [Excel](https://x.com) with `M`.\n';
+  const { meta, body } = P.parseFrontmatter(md);
+  const out = P.deriveMetaFromBody(meta, body);
+  assert.equal(out.meta.summary, 'Uses Power Query and Excel with M.');
+});
+
+test('deriveMetaFromBody: ignores headings inside code fences', () => {
+  const md = '```\n# Not a title\n```\n\n# Real Title\n';
+  const { meta, body } = P.parseFrontmatter(md);
+  const out = P.deriveMetaFromBody(meta, body);
+  assert.notEqual(out.meta.title, 'Not a title');
 });

@@ -240,6 +240,41 @@ The registry itself (`assets/data/projects.json`) is the only piece that must ex
 and it contains only locator data. (The bundled demo project uses a same-origin
 `localRoot` instead of GitHub so you can preview the pipeline before any repo exists.)
 
+### Registry defaults
+
+`owner` and `defaultBranch` are declared **once** at the top level of
+`assets/data/projects.json` and are inherited by every project entry, so a project
+normally needs nothing but a `repo`:
+
+```json
+{
+  "owner": "muvandii",
+  "defaultBranch": "main",
+  "projects": [
+    { "repo": "Project_01_Retail_Sales_Consolidation" }
+  ]
+}
+```
+
+An entry may still set its own `owner` or `branch` to override the defaults, and `id`
+defaults to the repository name when omitted. An entry with neither `repo` + `owner` nor
+`localRoot` is skipped with a console warning rather than producing a broken URL.
+
+### If `project.md` has no frontmatter
+
+Frontmatter is recommended, but not required. When it is missing, the portfolio falls
+back — in this order — to:
+
+1. the YAML frontmatter values,
+2. the fallback `title` / `summary` in `projects.json`,
+3. values read from the Markdown itself: the **first H1** becomes the title (and is
+   removed from the body so it isn't shown twice), and the **first paragraph** becomes
+   the summary.
+
+So an existing `project.md` that starts with `# PROJECT 1: …` renders correctly as soon
+as it is pushed. Add frontmatter when you want precise control over the card text,
+category, technologies, cover image, or ordering.
+
 ---
 
 ## modules.md — module structure
@@ -292,7 +327,7 @@ npx serve .
 Run the unit tests (Node 18+):
 
 ```bash
-node --test tests/site.test.js
+node --test
 ```
 
 Deployment is unchanged: push to `main` — GitHub Pages serves the repository root

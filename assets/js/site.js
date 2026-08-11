@@ -319,12 +319,66 @@
     });
   }
 
+  /**
+   * Normalizes a raw registry object.
+   *
+   * The registry declares `owner` and `defaultBranch` ONCE at the top
+   * level; individual project entries usually omit them. Every consumer
+   * (mediaRoot, docUrl, repoUrl, cache keys, the "expected repository"
+   * notice) reads `project.owner` / `project.branch` directly, so those
+   * top-level defaults must be pushed down onto each project here —
+   * otherwise the raw URL becomes
+   *   https://raw.githubusercontent.com/undefined/<repo>/main/...
+   * which 404s and makes every project render as "not published yet".
+   *
+   * Also fills the `id` (defaults to the repo name) so a registry entry
+   * can be added with nothing but a `repo`.
+   */
+  function normalizeRegistry(registry) {
+    var reg = registry || {};
+    var owner = reg.owner || '';
+    var defaultBranch = reg.defaultBranch || 'main';
+    var projects = Array.isArray(reg.projects) ? reg.projects : [];
+
+    var normalized = projects.map(function (raw) {
+      var p = {};
+      for (var k in raw) {
+        if (Object.prototype.hasOwnProperty.call(raw, k)) p[k] = raw[k];
+      }
+      // Local/demo projects are served from this repository — no owner needed.
+      if (!p.localRoot) {
+        if (!p.owner) p.owner = owner;
+        if (!p.branch) p.branch = defaultBranch;
+        if (!p.id) p.id = p.repo;
+      } else if (!p.id) {
+        p.id = slugify(p.localRoot);
+      }
+      return p;
+    }).filter(function (p) {
+      var usable = !!p.localRoot || (!!p.owner && !!p.repo);
+      if (!usable && typeof console !== 'undefined' && console.warn) {
+        console.warn(
+          '[portfolio] Skipping registry entry without a resolvable source. ' +
+          'Each project needs either "repo" (plus a top-level "owner") or "localRoot".',
+          p
+        );
+      }
+      return usable;
+    });
+
+    return {
+      owner: owner,
+      defaultBranch: defaultBranch,
+      projects: normalized
+    };
+  }
+
   /** Loads the registry file. */
   function loadRegistry() {
     return fetch('assets/data/projects.json', { method: 'GET' }).then(function (res) {
       if (!res.ok) throw new Error('Failed to load project registry (' + res.status + ')');
       return res.json();
-    });
+    }).then(normalizeRegistry);
   }
 
   /**
@@ -332,15 +386,109 @@
    * Resolves to { status, project, meta, body, raw } — or a status-only
    * object when the file is missing/unreachable.
    */
+  /**
+   * Derives metadata from the Markdown body for documents that have no
+   * (or incomplete) YAML frontmatter — a very common case when an
+   * existing project.md is dropped into the repository as-is.
+   *
+   *  - `title`   <- the first level-1 heading, otherwise the first heading
+   *  - `summary` <- the first real paragraph after that heading
+   *
+   * When the title comes from a leading H1, that heading is removed from
+   * the body so the case-study page does not print the title twice
+   * (the hero already shows it).
+   */
+  function deriveMetaFromBody(meta, body) {
+    var result = { meta: meta, body: body, derived: {} };
+    var lines = String(body || '').split(/\r?\n/);
+    var inFence = false;
+    var headingIndex = -1;
+    var headingText = '';
+    var headingLevel = 0;
+
+    for (var i = 0; i < lines.length; i++) {
+      var line = lines[i];
+      if (/^\s{0,3}(```|~~~)/.test(line)) { inFence = !inFence; continue; }
+      if (inFence) continue;
+      var atx = line.match(/^\s{0,3}(#{1,6})\s+(.+?)\s*#*\s*$/);
+      if (atx) {
+        headingIndex = i;
+        headingLevel = atx[1].length;
+        headingText = atx[2].trim();
+        break;
+      }
+      // Setext H1:  Title \n =====
+      if (line.trim() && i + 1 < lines.length && /^\s{0,3}=+\s*$/.test(lines[i + 1])) {
+        headingIndex = i;
+        headingLevel = 1;
+        headingText = line.trim();
+        break;
+      }
+      if (line.trim()) break; // content before any heading — don't guess
+    }
+
+    if (headingIndex === -1 || !headingText) return result;
+
+    if (!meta.title) {
+      meta.title = headingText.replace(/\s*[:\u2013\u2014-]\s*$/, '');
+      result.derived.title = true;
+      // Only strip the heading when it's a top-level title at the very top.
+      if (headingLevel === 1) {
+        var drop = headingIndex + 1;
+        // setext underline
+        if (/^\s{0,3}=+\s*$/.test(lines[headingIndex + 1] || '')) drop += 1;
+        while (drop < lines.length && lines[drop].trim() === '') drop += 1;
+        result.body = lines.slice(drop).join('\n');
+      }
+    }
+
+    if (!meta.summary) {
+      var searchFrom = (result.body === body) ? headingIndex + 1 : 0;
+      var searchLines = (result.body === body) ? lines : result.body.split(/\r?\n/);
+      var para = [];
+      for (var j = searchFrom; j < searchLines.length; j++) {
+        var l = searchLines[j];
+        if (/^\s{0,3}(```|~~~)/.test(l)) break;
+        if (/^\s{0,3}#{1,6}\s/.test(l)) { if (para.length) break; else continue; }
+        if (/^\s{0,3}([-*_]\s*){3,}$/.test(l)) { if (para.length) break; else continue; }
+        if (/^\s{0,3}[-*+]\s|^\s{0,3}\d+\.\s|^\s{0,3}>|^\s{0,3}\|/.test(l)) { if (para.length) break; else continue; }
+        if (!l.trim()) { if (para.length) break; else continue; }
+        para.push(l.trim());
+      }
+      if (para.length) {
+        var text = para.join(' ')
+          .replace(/!\[[^\]]*\]\([^)]*\)/g, '')            // images
+          .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')          // links -> text
+          .replace(/[*_`]+/g, '')                           // emphasis / code
+          .replace(/\s+/g, ' ')
+          .trim();
+        if (text.length > 220) text = text.slice(0, 217).replace(/\s+\S*$/, '') + '…';
+        if (text) { meta.summary = text; result.derived.summary = true; }
+      }
+    }
+
+    return result;
+  }
+
   function loadProjectMeta(project) {
     return fetchDoc(project, 'project.md').then(function (res) {
       if (res.status !== 'ok') return { status: res.status, project: project };
       var parsed = parseFrontmatter(res.text);
+      var derived = deriveMetaFromBody(parsed.meta, parsed.body);
+      var meta = derived.meta;
+
+      // Precedence: real frontmatter > registry values > values guessed
+      // from the Markdown body. A guessed title/summary is only a
+      // best-effort reading of the document, so an explicit value in
+      // projects.json should win over it.
+      if (derived.derived.title && project.title) meta.title = project.title;
+      if (derived.derived.summary && project.summary) meta.summary = project.summary;
+
       return {
         status: 'ok',
         project: project,
-        meta: parsed.meta,
-        body: parsed.body,
+        meta: meta,
+        body: derived.body,
         raw: res.text,
         cached: res.cached
       };
@@ -585,7 +733,9 @@
     return (
       '<article class="project-card" data-id="' + escapeHtml(project.id) + '">' +
         '<a class="project-card__media" href="' + escapeHtml(href) + '" tabindex="-1" aria-hidden="true">' +
-          '<img class="project-card__cover" src="' + escapeHtml(cover) + '" alt="' + escapeHtml(title) + ' cover image" loading="lazy" decoding="async">' +
+          '<img class="project-card__cover" src="' + escapeHtml(cover) + '" alt="' + escapeHtml(title) + ' cover image"' +
+            ' data-candidates="' + escapeHtml(JSON.stringify([cover, PLACEHOLDER_URL])) + '"' +
+            ' loading="lazy" decoding="async">' +
           categoryHtml + demo +
         '</a>' +
         '<div class="project-card__body">' +
@@ -769,6 +919,8 @@
     repoUrl: repoUrl,
     repoDocsUrl: repoDocsUrl,
     fetchDoc: fetchDoc,
+    normalizeRegistry: normalizeRegistry,
+    deriveMetaFromBody: deriveMetaFromBody,
     loadRegistry: loadRegistry,
     loadProjectMeta: loadProjectMeta,
     renderMarkdown: renderMarkdown,
