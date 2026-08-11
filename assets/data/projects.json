@@ -4,7 +4,7 @@
   "defaultBranch": "main",
   "projects": [
     {
-      "id": "sales-reporting-consolidation",
+      "id": "Project_01_Retail_Sales_Consolidation",
       "repo": "Project_01_Retail_Sales_Consolidation",
       "branch": "main",
       "title": "Multistore retail sales consolidation",
