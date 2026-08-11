@@ -8,7 +8,7 @@
       "repo": "Project_01_Retail_Sales_Consolidation",
       "branch": "main",
       "title": "Multistore retail sales consolidation",
-      "category": "Data Extraction ransformatin and Loading",
+      "category": "Data Extraction, Transformation and Loading",
       "summary": "Automated monthly sales reports using Power Query to consolidate data from multiple regional spreadsheets into a single refreshable dashboard.",
       "technologies": ["Power Query", "Excel", "M"]
     },
