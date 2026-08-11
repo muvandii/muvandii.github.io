@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>Page Not Found — Muvandii Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="./assets/svgs/mini.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="header" id="header" role="banner">
+        <div class="header__inner">
+            <a href="index.html" class="logo" aria-label="Muvandii — Home">
+                <img src="assets/svgs/fullz.png" alt="Muvandii Logo" class="logo__image" width="120" height="80">
+            </a>
+            <nav class="nav" role="navigation" aria-label="Main navigation">
+                <ul class="nav__list nav__list--static">
+                    <li><a href="index.html#home" class="nav__link">Home</a></li>
+                    <li><a href="index.html#projects" class="nav__link">Projects</a></li>
+                    <li><a href="index.html#about" class="nav__link">About</a></li>
+                    <li><a href="index.html#contact" class="nav__link nav__link--cta">Get In Touch</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content" class="error-page">
+        <div class="container">
+            <div class="error-page__code" aria-hidden="true">404</div>
+            <h1 class="error-page__title">Page not found</h1>
+            <p class="error-page__text">The page you're looking for doesn't exist or has moved. Let's get you back to the data.</p>
+            <div class="hero__actions" style="justify-content:center">
+                <a href="index.html" class="btn btn--primary btn--lg">Back to Home</a>
+                <a href="index.html#projects" class="btn btn--secondary btn--lg">View Projects</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <span class="footer__logo-text">Muvandii<em>.</em></span>
+            <div class="footer__links">
+                <a href="index.html#home" class="footer__link">Home</a>
+                <a href="index.html#projects" class="footer__link">Projects</a>
+                <a href="index.html#about" class="footer__link">About</a>
+                <a href="index.html#contact" class="footer__link">Contact</a>
+            </div>
+            <span class="footer__copyright">&copy; <time id="footerYear" datetime="2026">2026</time> Muvandii. All rights reserved.</span>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var yearEl = document.getElementById('footerYear');
+            if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+        });
+    </script>
+</body>
+</html>

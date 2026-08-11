@@ -1,0 +1,44 @@
+{
+  "_comment": "PORTFOLIO PROJECT REGISTRY — the only file to touch when adding a project. Each entry points at a GitHub repository that follows the standard structure (documentation/project.md + documentation/modules.md + images/cover.png). All visible content (title, summary, category, technologies, cover image) is loaded automatically from the repository's project.md frontmatter. The title/summary/category/technologies fields below are OPTIONAL fallbacks shown only while a repository has not been published yet.",
+  "owner": "muvandii",
+  "defaultBranch": "main",
+  "projects": [
+    {
+      "id": "sales-reporting-automation",
+      "repo": "project-01-sales-reporting-automation",
+      "branch": "main",
+      "title": "Sales Reporting Automation",
+      "category": "Data Analytics",
+      "summary": "Automated monthly sales reports using Power Query to consolidate data from multiple regional spreadsheets into a single refreshable dashboard.",
+      "technologies": ["Power Query", "Excel", "Power BI"]
+    },
+    {
+      "id": "inventory-dashboard",
+      "repo": "project-02-inventory-dashboard",
+      "branch": "main",
+      "title": "Inventory Dashboard",
+      "category": "Business Intelligence",
+      "summary": "Real-time inventory tracking dashboard with automated low-stock alerts and supplier performance metrics built in Power BI.",
+      "technologies": ["Power BI", "DAX", "Power Query"]
+    },
+    {
+      "id": "expense-tracker-automation",
+      "repo": "project-03-expense-tracker-automation",
+      "branch": "main",
+      "title": "Expense Tracker Automation",
+      "category": "Reporting Automation",
+      "summary": "Automated expense tracking solution with categorized spending analysis and budget vs. actual comparisons for departmental cost control.",
+      "technologies": ["Excel", "Power Query", "VBA"]
+    },
+    {
+      "id": "project-template-demo",
+      "_comment": "Demo entry: renders the bundled example documentation (templates/project-repository) so you can see the full pipeline working before your real repositories exist. Delete this entry once your projects are live.",
+      "localRoot": "templates/project-repository",
+      "demo": true,
+      "title": "Retail Sales Consolidation",
+      "category": "Template Demo",
+      "summary": "Example case study shipped with the portfolio template. It demonstrates exactly how documentation/project.md and documentation/modules.md are rendered on this site.",
+      "technologies": ["Power Query", "Excel", "Power BI"]
+    }
+  ]
+}

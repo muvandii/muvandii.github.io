@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1E293B"/>
+      <stop offset="1" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="barGold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F2C811"/>
+      <stop offset="1" stop-color="#D4A90D"/>
+    </linearGradient>
+    <linearGradient id="barBlue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3B82F6"/>
+      <stop offset="1" stop-color="#1D4ED8"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <g opacity="0.08" stroke="#ffffff" stroke-width="1">
+    <line x1="0" y1="75" x2="800" y2="75"/>
+    <line x1="0" y1="150" x2="800" y2="150"/>
+    <line x1="0" y1="225" x2="800" y2="225"/>
+    <line x1="0" y1="300" x2="800" y2="300"/>
+    <line x1="0" y1="375" x2="800" y2="375"/>
+    <line x1="100" y1="0" x2="100" y2="450"/>
+    <line x1="200" y1="0" x2="200" y2="450"/>
+    <line x1="300" y1="0" x2="300" y2="450"/>
+    <line x1="400" y1="0" x2="400" y2="450"/>
+    <line x1="500" y1="0" x2="500" y2="450"/>
+    <line x1="600" y1="0" x2="600" y2="450"/>
+    <line x1="700" y1="0" x2="700" y2="450"/>
+  </g>
+  <g transform="translate(560 120)">
+    <rect x="0" y="0" width="180" height="130" rx="14" fill="#0B1220" stroke="#334155" stroke-width="1.5"/>
+    <rect x="14" y="14" width="76" height="44" rx="8" fill="rgba(255,255,255,0.06)"/>
+    <rect x="14" y="24" width="40" height="10" rx="3" fill="#F2C811"/>
+    <rect x="14" y="38" width="60" height="8" rx="3" fill="rgba(255,255,255,0.3)"/>
+    <rect x="100" y="14" width="66" height="44" rx="8" fill="rgba(255,255,255,0.06)"/>
+    <rect x="110" y="24" width="30" height="10" rx="3" fill="#3B82F6"/>
+    <rect x="110" y="38" width="46" height="8" rx="3" fill="rgba(255,255,255,0.3)"/>
+    <rect x="14" y="68" width="152" height="48" rx="8" fill="rgba(255,255,255,0.05)"/>
+    <rect x="24" y="98" width="14" height="10" rx="2" fill="url(#barGold)"/>
+    <rect x="44" y="88" width="14" height="20" rx="2" fill="url(#barBlue)"/>
+    <rect x="64" y="93" width="14" height="15" rx="2" fill="url(#barGold)"/>
+    <rect x="84" y="80" width="14" height="28" rx="2" fill="url(#barBlue)"/>
+    <rect x="104" y="90" width="14" height="18" rx="2" fill="url(#barGold)"/>
+    <rect x="124" y="84" width="14" height="24" rx="2" fill="url(#barBlue)"/>
+    <rect x="144" y="94" width="14" height="14" rx="2" fill="url(#barGold)"/>
+  </g>
+  <text x="60" y="150" font-family="Inter, -apple-system, sans-serif" font-size="34" font-weight="800" fill="#FFFFFF">Project Preview</text>
+  <text x="60" y="190" font-family="Inter, -apple-system, sans-serif" font-size="17" fill="#94A3B8">The cover image will appear here once this</text>
+  <text x="60" y="216" font-family="Inter, -apple-system, sans-serif" font-size="17" fill="#94A3B8">project&apos;s repository provides images/cover.png.</text>
+</svg>

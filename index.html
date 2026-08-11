@@ -3,1629 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Muvandii — Data Analyst portfolio specializing in Excel Automation, Power Query ETL, and Power BI dashboards. Practical reporting and analytics solutions for business impact.">
-    <meta name="keywords" content="Data Analyst, Excel Automation, Power Query, Power BI, Portfolio, Reporting Automation, ETL, Dashboards, Muvandii">
+    <meta name="description" content="Muvandii — Data Analyst portfolio specializing in Excel Automation, Power Query ETL, and Power BI dashboards. Practical reporting and analytics solutions with full case-study documentation.">
+    <meta name="keywords" content="Data Analyst, Excel Automation, Power Query, Power BI, Portfolio, Reporting Automation, ETL, Dashboards, Case Studies, Muvandii">
     <meta name="author" content="Muvandii">
     <meta name="robots" content="index, follow">
     <meta property="og:title" content="Muvandii — Data Analyst Portfolio">
-    <meta property="og:description" content="Excel Automation, Power Query & Power BI portfolio. Practical solutions for reporting and data-driven decisions.">
+    <meta property="og:description" content="Excel Automation, Power Query &amp; Power BI portfolio. Practical solutions for reporting and data-driven decisions, documented end-to-end.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://muvandii.github.io">
+    <meta property="og:image" content="https://muvandii.github.io/assets/svgs/fullz.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Muvandii — Data Analyst Portfolio">
-    <meta name="twitter:description" content="Excel Automation, Power Query & Power BI portfolio. Practical solutions for reporting and data-driven decisions.">
+    <meta name="twitter:description" content="Excel Automation, Power Query &amp; Power BI portfolio. Practical solutions for reporting and data-driven decisions.">
     <title>Muvandii — Data Analyst Portfolio | Excel • Power Query • Power BI</title>
 
-    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="./assets/svgs/mini.png">
-
-    <style>
-        /* ============================
-             CSS CUSTOM PROPERTIES
-             ============================ */
-        :root {
-            --color-navy: #0F172A;
-            --color-navy-light: #1E293B;
-            --color-navy-lighter: #334155;
-            --color-gold: #F2C811;
-            --color-gold-dark: #D4A90D;
-            --color-gold-light: #FEF3C7;
-            --color-blue: #2563EB;
-            --color-blue-dark: #1D4ED8;
-            --color-blue-light: #DBEAFE;
-            --color-slate: #475569;
-            --color-slate-light: #64748B;
-            --color-slate-lighter: #94A3B8;
-            --color-light-gray: #F8FAFC;
-            --color-light-gray-border: #E2E8F0;
-            --color-white: #FFFFFF;
-            --color-off-white: #F1F5F9;
-            --color-text-primary: #0F172A;
-            --color-text-secondary: #475569;
-            --color-text-tertiary: #64748B;
-            --color-success: #10B981;
-            --color-success-light: #D1FAE5;
-
-            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', 'Consolas', monospace;
-
-            --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
-            --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.04);
-            --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.08), 0 2px 6px rgba(15, 23, 42, 0.03);
-            --shadow-xl: 0 20px 48px rgba(15, 23, 42, 0.1), 0 4px 12px rgba(15, 23, 42, 0.05);
-
-            --radius-sm: 6px;
-            --radius-md: 10px;
-            --radius-lg: 16px;
-            --radius-xl: 20px;
-            --radius-full: 9999px;
-
-            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-smooth: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-bounce: 350ms cubic-bezier(0.34, 1.56, 0.64, 1);
-
-            --max-width: 1200px;
-            --max-width-narrow: 900px;
-            --nav-height: 72px;
-        }
-
-        /* ============================
-             RESET & BASE
-             ============================ */
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            -webkit-text-size-adjust: 100%;
-            font-size: 16px;
-            scroll-padding-top: var(--nav-height);
-        }
-
-        body {
-            font-family: var(--font-primary);
-            font-weight: 400;
-            line-height: 1.6;
-            color: var(--color-text-primary);
-            background-color: var(--color-white);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            overflow-x: hidden;
-            min-height: 100vh;
-        }
-
-        /* Skip link for accessibility */
-        .skip-link {
-            position: absolute;
-            top: -100px;
-            left: 16px;
-            background: var(--color-navy);
-            color: var(--color-white);
-            padding: 10px 18px;
-            border-radius: var(--radius-sm);
-            z-index: 10000;
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-decoration: none;
-            transition: top var(--transition-fast);
-            letter-spacing: 0.01em;
-        }
-
-        .skip-link:focus {
-            top: 12px;
-            outline: 3px solid var(--color-gold);
-            outline-offset: 3px;
-        }
-
-        /* ============================
-             TYPOGRAPHY
-             ============================ */
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-weight: 700;
-            line-height: 1.2;
-            color: var(--color-navy);
-            letter-spacing: -0.02em;
-        }
-
-        h1 {
-            font-size: clamp(2rem, 5vw, 3.2rem);
-            font-weight: 800;
-            letter-spacing: -0.03em;
-        }
-        h2 {
-            font-size: clamp(1.5rem, 3.5vw, 2.2rem);
-            font-weight: 700;
-            letter-spacing: -0.02em;
-        }
-        h3 {
-            font-size: clamp(1.15rem, 2.2vw, 1.5rem);
-            font-weight: 600;
-            letter-spacing: -0.01em;
-        }
-        h4 {
-            font-size: 1.05rem;
-            font-weight: 600;
-        }
-
-        p {
-            color: var(--color-text-secondary);
-            font-size: 1rem;
-            line-height: 1.7;
-            max-width: 65ch;
-        }
-
-        a {
-            color: var(--color-blue);
-            text-decoration: none;
-            transition: color var(--transition-fast);
-            font-weight: 500;
-        }
-
-        a:hover {
-            color: var(--color-blue-dark);
-        }
-
-        a:focus-visible {
-            outline: 2px solid var(--color-blue);
-            outline-offset: 3px;
-            border-radius: 3px;
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* ============================
-             UTILITY CLASSES
-             ============================ */
-        .container {
-            width: 100%;
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .container--narrow {
-            max-width: var(--max-width-narrow);
-        }
-
-        .section {
-            padding: 80px 0;
-        }
-
-        .section__header {
-            text-align: center;
-            margin-bottom: 48px;
-        }
-
-        .section__label {
-            display: inline-block;
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--color-blue);
-            margin-bottom: 8px;
-            background: var(--color-blue-light);
-            padding: 5px 14px;
-            border-radius: var(--radius-full);
-        }
-
-        .section__title {
-            margin-bottom: 12px;
-        }
-
-        .section__subtitle {
-            color: var(--color-text-tertiary);
-            font-size: 1.05rem;
-            max-width: 550px;
-            margin: 0 auto;
-        }
-
-        .divider {
-            width: 48px;
-            height: 3px;
-            background: var(--color-gold);
-            border-radius: var(--radius-full);
-            margin: 0 auto 16px;
-        }
-
-        .divider--left {
-            margin: 0 0 16px;
-        }
-
-        /* ============================
-             BUTTONS
-             ============================ */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 13px 26px;
-            font-family: var(--font-primary);
-            font-size: 0.95rem;
-            font-weight: 600;
-            border-radius: var(--radius-full);
-            cursor: pointer;
-            transition: all var(--transition-smooth);
-            text-decoration: none;
-            letter-spacing: 0.01em;
-            white-space: nowrap;
-            border: 2px solid transparent;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn--primary {
-            background: var(--color-blue);
-            color: var(--color-white);
-            border-color: var(--color-blue);
-            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
-        }
-
-        .btn--primary:hover {
-            background: var(--color-blue-dark);
-            border-color: var(--color-blue-dark);
-            color: var(--color-white);
-            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
-            transform: translateY(-1px);
-        }
-
-        .btn--secondary {
-            background: transparent;
-            color: var(--color-navy);
-            border-color: var(--color-slate-lighter);
-        }
-
-        .btn--secondary:hover {
-            border-color: var(--color-navy);
-            color: var(--color-navy);
-            background: var(--color-light-gray);
-            transform: translateY(-1px);
-        }
-
-        .btn--gold {
-            background: var(--color-gold);
-            color: var(--color-navy);
-            border-color: var(--color-gold);
-            font-weight: 700;
-            box-shadow: 0 2px 8px rgba(242, 200, 17, 0.3);
-        }
-
-        .btn--gold:hover {
-            background: var(--color-gold-dark);
-            border-color: var(--color-gold-dark);
-            color: var(--color-navy);
-            box-shadow: 0 6px 20px rgba(242, 200, 17, 0.45);
-            transform: translateY(-1px);
-        }
-
-        .btn--sm {
-            padding: 9px 18px;
-            font-size: 0.85rem;
-        }
-
-        .btn--lg {
-            padding: 16px 32px;
-            font-size: 1rem;
-        }
-
-        .btn__icon {
-            width: 16px;
-            height: 16px;
-            flex-shrink: 0;
-        }
-
-        /* ============================
-             HEADER / NAVIGATION
-             ============================ */
-        .header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--color-light-gray-border);
-            height: var(--nav-height);
-            transition: box-shadow var(--transition-smooth);
-        }
-
-        .header--scrolled {
-            box-shadow: var(--shadow-md);
-        }
-
-        .header__inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 100%;
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* Logo */
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            flex-shrink: 0;
-            position: relative;
-        }
-
-        .logo__text {
-            font-family: var(--font-primary);
-            font-weight: 800;
-            font-size: 1.5rem;
-            letter-spacing: -0.02em;
-            color: var(--color-navy);
-            position: relative;
-            display: inline-block;
-            line-height: 1;
-            transition: color var(--transition-fast);
-        }
-
-        .logo__accent-dot {
-            display: inline-block;
-            width: 7px;
-            height: 7px;
-            background: var(--color-gold);
-            border-radius: 50%;
-            position: relative;
-            top: -0.45em;
-            margin-left: 1px;
-            animation: logoDotPulse 3s ease-in-out infinite;
-        }
-
-        .logo__accent-dot:nth-child(2) {
-            animation-delay: 0.6s;
-        }
-
-        @keyframes logoDotPulse {
-            0%,
-            100% {
-                transform: scale(1);
-                opacity: 0.85;
-            }
-            50% {
-                transform: scale(1.5);
-                opacity: 1;
-            }
-        }
-
-        .logo__underline {
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 100%;
-            height: 2.5px;
-            background: linear-gradient(90deg, var(--color-gold) 0%, var(--color-gold) 35%, var(--color-blue) 35%, var(--color-blue) 70%, var(--color-gold) 70%, var(--color-gold) 100%);
-            border-radius: var(--radius-full);
-            opacity: 0.7;
-        }
-
-        .logo:hover .logo__text {
-            color: var(--color-navy-light);
-        }
-
-        .logo:hover .logo__underline {
-            opacity: 1;
-        }
-
-        /* Navigation */
-        .nav__list {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .nav__link {
-            display: inline-block;
-            padding: 8px 16px;
-            font-weight: 500;
-            font-size: 0.9rem;
-            color: var(--color-text-secondary);
-            text-decoration: none;
-            border-radius: var(--radius-full);
-            transition: all var(--transition-fast);
-            letter-spacing: 0.01em;
-            position: relative;
-        }
-
-        .nav__link:hover {
-            color: var(--color-navy);
-            background: var(--color-off-white);
-        }
-
-        .nav__link--active {
-            color: var(--color-blue);
-            font-weight: 600;
-        }
-
-        .nav__link--cta {
-            background: var(--color-navy);
-            color: var(--color-white) !important;
-            padding: 10px 20px;
-            font-weight: 600;
-            margin-left: 4px;
-        }
-
-        .nav__link--cta:hover {
-            background: var(--color-navy-light);
-            color: var(--color-white) !important;
-        }
-
-        /* Hamburger */
-        .nav__toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 8px;
-            z-index: 1001;
-            border-radius: var(--radius-sm);
-            transition: background var(--transition-fast);
-        }
-
-        .nav__toggle:hover {
-            background: var(--color-off-white);
-        }
-
-        .nav__toggle:focus-visible {
-            outline: 2px solid var(--color-blue);
-            outline-offset: 3px;
-        }
-
-        .nav__toggle-bar {
-            display: block;
-            width: 24px;
-            height: 2.5px;
-            background: var(--color-navy);
-            border-radius: 4px;
-            transition: all var(--transition-smooth);
-            margin: 5px 0;
-        }
-
-        .nav__toggle--open .nav__toggle-bar:nth-child(1) {
-            transform: translateY(7.5px) rotate(45deg);
-        }
-        .nav__toggle--open .nav__toggle-bar:nth-child(2) {
-            opacity: 0;
-            transform: scaleX(0);
-        }
-        .nav__toggle--open .nav__toggle-bar:nth-child(3) {
-            transform: translateY(-7.5px) rotate(-45deg);
-        }
-
-        /* ============================
-             HERO SECTION
-             ============================ */
-        .hero {
-            padding: 60px 0 80px;
-            background: var(--color-white);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -120px;
-            right: -180px;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(242, 200, 17, 0.06) 0%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -100px;
-            left: -150px;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.04) 0%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-
-        .hero__inner {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 48px;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero__content {
-            max-width: 580px;
-        }
-
-        .hero__badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: var(--color-blue-light);
-            color: var(--color-blue);
-            font-weight: 600;
-            font-size: 0.82rem;
-            padding: 6px 14px;
-            border-radius: var(--radius-full);
-            margin-bottom: 20px;
-            letter-spacing: 0.02em;
-        }
-
-        .hero__badge-dot {
-            width: 7px;
-            height: 7px;
-            background: var(--color-blue);
-            border-radius: 50%;
-            animation: logoDotPulse 2.5s ease-in-out infinite;
-        }
-
-        .hero__title {
-            margin-bottom: 16px;
-            color: var(--color-navy);
-            font-size: clamp(2rem, 5vw, 3.2rem);
-            line-height: 1.15;
-        }
-
-        .hero__title-accent {
-            color: var(--color-blue);
-            position: relative;
-        }
-
-        .hero__title-accent::after {
-            content: '';
-            position: absolute;
-            bottom: 2px;
-            left: 0;
-            width: 100%;
-            height: 6px;
-            background: var(--color-gold-light);
-            border-radius: 3px;
-            z-index: -1;
-            opacity: 0.7;
-        }
-
-        .hero__subtitle {
-            font-size: 1.1rem;
-            color: var(--color-text-secondary);
-            margin-bottom: 32px;
-            line-height: 1.7;
-            max-width: 480px;
-        }
-
-        .hero__actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        /* Hero visual */
-        .hero__visual {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .hero__dashboard-card {
-            background: var(--color-white);
-            border: 1px solid var(--color-light-gray-border);
-            border-radius: var(--radius-lg);
-            padding: 28px 24px;
-            box-shadow: var(--shadow-xl);
-            width: 100%;
-            max-width: 420px;
-            position: relative;
-        }
-
-        .hero__dashboard-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--color-gold), var(--color-blue));
-            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-        }
-
-        .dashboard-card__header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .dashboard-card__title {
-            font-weight: 700;
-            font-size: 0.9rem;
-            color: var(--color-navy);
-            letter-spacing: 0.01em;
-        }
-
-        .dashboard-card__badge {
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            background: var(--color-success-light);
-            color: var(--color-success);
-            padding: 4px 10px;
-            border-radius: var(--radius-full);
-        }
-
-        .dashboard-card__kpis {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 14px;
-            margin-bottom: 18px;
-        }
-
-        .kpi-mini {
-            background: var(--color-light-gray);
-            border-radius: var(--radius-sm);
-            padding: 14px;
-            text-align: center;
-            border: 1px solid transparent;
-            transition: border-color var(--transition-fast);
-        }
-
-        .kpi-mini:hover {
-            border-color: var(--color-light-gray-border);
-        }
-
-        .kpi-mini__value {
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: var(--color-navy);
-            letter-spacing: -0.02em;
-            line-height: 1;
-        }
-        .kpi-mini__label {
-            font-size: 0.7rem;
-            color: var(--color-text-tertiary);
-            font-weight: 500;
-            margin-top: 4px;
-            letter-spacing: 0.03em;
-            text-transform: uppercase;
-        }
-        .kpi-mini--highlight .kpi-mini__value {
-            color: var(--color-blue);
-        }
-
-        .dashboard-card__chart-placeholder {
-            display: flex;
-            align-items: flex-end;
-            gap: 8px;
-            height: 70px;
-            padding: 4px 0;
-        }
-
-        .mini-bar {
-            flex: 1;
-            background: var(--color-blue-light);
-            border-radius: 4px 4px 0 0;
-            transition: all var(--transition-smooth);
-            position: relative;
-            min-width: 12px;
-        }
-
-        .mini-bar:nth-child(1) {
-            height: 55%;
-        }
-        .mini-bar:nth-child(2) {
-            height: 75%;
-            background: var(--color-blue);
-            opacity: 0.7;
-        }
-        .mini-bar:nth-child(3) {
-            height: 45%;
-        }
-        .mini-bar:nth-child(4) {
-            height: 90%;
-            background: var(--color-gold);
-            opacity: 0.8;
-        }
-        .mini-bar:nth-child(5) {
-            height: 60%;
-        }
-        .mini-bar:nth-child(6) {
-            height: 80%;
-            background: var(--color-blue);
-            opacity: 0.6;
-        }
-        .mini-bar:nth-child(7) {
-            height: 50%;
-        }
-
-        .dashboard-card__footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 16px;
-            padding-top: 14px;
-            border-top: 1px solid var(--color-light-gray-border);
-        }
-
-        .dashboard-card__updated {
-            font-size: 0.72rem;
-            color: var(--color-text-tertiary);
-            font-weight: 500;
-        }
-
-        .dashboard-card__dot {
-            width: 8px;
-            height: 8px;
-            background: var(--color-success);
-            border-radius: 50%;
-            animation: logoDotPulse 3s ease-in-out infinite;
-        }
-
-        /* ============================
-             SKILLS SECTION
-             ============================ */
-        .skills {
-            background: var(--color-light-gray);
-            padding: 80px 0;
-        }
-
-        .skills__grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .skill-card {
-            background: var(--color-white);
-            border: 1px solid var(--color-light-gray-border);
-            border-radius: var(--radius-md);
-            padding: 24px 20px;
-            transition: all var(--transition-smooth);
-            position: relative;
-            overflow: hidden;
-            cursor: default;
-        }
-
-        .skill-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 3px;
-            height: 100%;
-            background: var(--color-gold);
-            border-radius: 0 3px 3px 0;
-            transform: scaleY(0);
-            transform-origin: top;
-            transition: transform var(--transition-smooth);
-        }
-
-        .skill-card:hover {
-            box-shadow: var(--shadow-lg);
-            border-color: transparent;
-            transform: translateY(-2px);
-        }
-
-        .skill-card:hover::before {
-            transform: scaleY(1);
-        }
-
-        .skill-card__icon {
-            width: 40px;
-            height: 40px;
-            border-radius: var(--radius-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 12px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: var(--color-white);
-            flex-shrink: 0;
-        }
-
-        .skill-card__icon--excel {
-            background: #217346;
-        }
-        .skill-card__icon--powerquery {
-            background: #2B579A;
-        }
-        .skill-card__icon--powerbi {
-            background: #F2C811;
-            color: #0F172A;
-        }
-        .skill-card__icon--cleaning {
-            background: #2563EB;
-        }
-        .skill-card__icon--reporting {
-            background: #7C3AED;
-        }
-        .skill-card__icon--kpi {
-            background: #059669;
-        }
-
-        .skill-card__title {
-            font-weight: 700;
-            font-size: 1rem;
-            color: var(--color-navy);
-            margin-bottom: 4px;
-            letter-spacing: -0.01em;
-        }
-
-        .skill-card__desc {
-            font-size: 0.82rem;
-            color: var(--color-text-tertiary);
-            line-height: 1.5;
-        }
-
-        /* ============================
-             PROJECTS SECTION
-             ============================ */
-        .projects {
-            padding: 80px 0;
-            background: var(--color-white);
-        }
-
-        .projects__grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        .project-card {
-            background: var(--color-white);
-            border: 1px solid var(--color-light-gray-border);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            transition: all var(--transition-smooth);
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
-
-        .project-card:hover {
-            box-shadow: var(--shadow-lg);
-            border-color: transparent;
-            transform: translateY(-3px);
-        }
-
-        .project-card__image-area {
-            background: var(--color-light-gray);
-            height: 160px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card__placeholder-icon {
-            opacity: 0.25;
-            transition: opacity var(--transition-smooth);
-        }
-
-        .project-card:hover .project-card__placeholder-icon {
-            opacity: 0.4;
-        }
-
-        .project-card__coming-soon-badge {
-            position: absolute;
-            top: 14px;
-            right: 14px;
-            background: var(--color-gold);
-            color: var(--color-navy);
-            font-weight: 700;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            padding: 5px 12px;
-            border-radius: var(--radius-full);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .project-card__body {
-            padding: 20px 22px 22px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-card__title {
-            font-weight: 700;
-            font-size: 1.05rem;
-            color: var(--color-navy);
-            margin-bottom: 6px;
-            letter-spacing: -0.01em;
-        }
-
-        .project-card__summary {
-            font-size: 0.85rem;
-            color: var(--color-text-tertiary);
-            line-height: 1.55;
-            margin-bottom: 14px;
-            flex: 1;
-        }
-
-        .project-card__tools {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 16px;
-        }
-
-        .tool-tag {
-            display: inline-block;
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 0.03em;
-            text-transform: uppercase;
-            padding: 4px 10px;
-            border-radius: var(--radius-full);
-            background: var(--color-off-white);
-            color: var(--color-text-secondary);
-            border: 1px solid var(--color-light-gray-border);
-        }
-
-        .tool-tag--gold {
-            background: var(--color-gold-light);
-            color: #7A6200;
-            border-color: transparent;
-        }
-
-        .tool-tag--blue {
-            background: var(--color-blue-light);
-            color: var(--color-blue-dark);
-            border-color: transparent;
-        }
-
-        .project-card__btn {
-            align-self: flex-start;
-            font-size: 0.82rem;
-            font-weight: 600;
-            padding: 8px 18px;
-            border-radius: var(--radius-full);
-            background: transparent;
-            border: 2px solid var(--color-light-gray-border);
-            color: var(--color-text-secondary);
-            cursor: pointer;
-            transition: all var(--transition-fast);
-            text-decoration: none;
-            font-family: var(--font-primary);
-            letter-spacing: 0.02em;
-        }
-
-        .project-card__btn:hover {
-            border-color: var(--color-blue);
-            color: var(--color-blue);
-            background: var(--color-blue-light);
-        }
-
-        /* ============================
-             LEARNING JOURNEY SECTION
-             ============================ */
-        .learning {
-            background: var(--color-navy);
-            padding: 72px 0;
-            color: var(--color-white);
-        }
-
-        .learning .section__label {
-            background: rgba(255, 255, 255, 0.12);
-            color: var(--color-gold);
-        }
-
-        .learning .section__title {
-            color: var(--color-white);
-        }
-        .learning .section__subtitle {
-            color: rgba(255, 255, 255, 0.7);
-        }
-        .learning .divider {
-            background: var(--color-gold);
-        }
-
-        .learning__grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-            margin-top: 32px;
-        }
-
-        .learning-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: var(--radius-md);
-            padding: 22px 18px;
-            text-align: center;
-            transition: all var(--transition-smooth);
-            cursor: default;
-        }
-
-        .learning-card:hover {
-            background: rgba(255, 255, 255, 0.09);
-            border-color: rgba(255, 255, 255, 0.25);
-            transform: translateY(-2px);
-        }
-
-        .learning-card__icon {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            display: block;
-            filter: grayscale(0.3);
-            transition: filter var(--transition-smooth);
-        }
-        .learning-card:hover .learning-card__icon {
-            filter: grayscale(0);
-        }
-
-        .learning-card__title {
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: var(--color-white);
-            letter-spacing: 0.01em;
-        }
-
-        .learning-card__status {
-            font-size: 0.7rem;
-            color: var(--color-gold);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            margin-top: 6px;
-        }
-
-        /* ============================
-             ABOUT SECTION
-             ============================ */
-        .about {
-            padding: 80px 0;
-            background: var(--color-white);
-        }
-
-        .about__inner {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 48px;
-            align-items: start;
-        }
-
-        .about__bio p {
-            margin-bottom: 16px;
-            font-size: 1.02rem;
-        }
-
-        .about__bio p:last-child {
-            margin-bottom: 0;
-        }
-
-        .about__highlights {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 14px;
-            margin-top: 20px;
-        }
-
-        .highlight-stat {
-            background: var(--color-light-gray);
-            border-radius: var(--radius-md);
-            padding: 18px 16px;
-            text-align: center;
-            border: 1px solid var(--color-light-gray-border);
-            transition: all var(--transition-smooth);
-        }
-
-        .highlight-stat:hover {
-            border-color: var(--color-slate-lighter);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .highlight-stat__number {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--color-blue);
-            letter-spacing: -0.02em;
-            line-height: 1;
-        }
-        .highlight-stat__label {
-            font-size: 0.75rem;
-            color: var(--color-text-tertiary);
-            font-weight: 500;
-            margin-top: 4px;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-        }
-
-        .about__sidebar {
-            background: var(--color-light-gray);
-            border-radius: var(--radius-lg);
-            padding: 28px;
-            border: 1px solid var(--color-light-gray-border);
-            position: sticky;
-            top: calc(var(--nav-height) + 24px);
-        }
-
-        .about__sidebar-title {
-            font-weight: 700;
-            font-size: 1rem;
-            margin-bottom: 16px;
-            color: var(--color-navy);
-        }
-
-        .about__tool-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .about__tool-tag {
-            display: inline-block;
-            font-size: 0.75rem;
-            font-weight: 600;
-            padding: 7px 13px;
-            background: var(--color-white);
-            border: 1px solid var(--color-light-gray-border);
-            border-radius: var(--radius-full);
-            color: var(--color-text-secondary);
-            transition: all var(--transition-fast);
-        }
-
-        .about__tool-tag:hover {
-            border-color: var(--color-blue);
-            color: var(--color-blue);
-            background: var(--color-blue-light);
-        }
-
-        .about__resume-btn {
-            width: 100%;
-            justify-content: center;
-            text-align: center;
-        }
-
-        /* ============================
-             CONTACT SECTION
-             ============================ */
-        .contact {
-            padding: 72px 0;
-            background: var(--color-light-gray);
-            text-align: center;
-        }
-
-        .contact__cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-top: 36px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .contact-card {
-            background: var(--color-white);
-            border: 1px solid var(--color-light-gray-border);
-            border-radius: var(--radius-md);
-            padding: 28px 20px;
-            text-decoration: none;
-            transition: all var(--transition-smooth);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            color: var(--color-text-primary);
-        }
-
-        .contact-card:hover {
-            box-shadow: var(--shadow-lg);
-            border-color: transparent;
-            transform: translateY(-3px);
-            color: var(--color-navy);
-        }
-
-        .contact-card__icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--color-navy);
-            color: var(--color-white);
-            transition: all var(--transition-smooth);
-            flex-shrink: 0;
-        }
-
-        .contact-card--linkedin:hover .contact-card__icon {
-            background: #0A66C2;
-        }
-        .contact-card--github:hover .contact-card__icon {
-            background: #24292E;
-        }
-        .contact-card--email:hover .contact-card__icon {
-            background: var(--color-blue);
-        }
-
-        .contact-card__label {
-            font-weight: 600;
-            font-size: 0.9rem;
-            letter-spacing: 0.01em;
-        }
-
-        .contact-card__value {
-            font-size: 0.8rem;
-            color: var(--color-text-tertiary);
-            word-break: break-all;
-        }
-
-        /* ============================
-             FOOTER
-             ============================ */
-        .footer {
-            background: var(--color-navy);
-            color: rgba(255, 255, 255, 0.7);
-            padding: 32px 0;
-            font-size: 0.85rem;
-        }
-
-        .footer__inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 16px;
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .footer__logo-text {
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: var(--color-white);
-            letter-spacing: -0.01em;
-        }
-
-        .footer__links {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
-
-        .footer__link {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color var(--transition-fast);
-            font-size: 0.85rem;
-        }
-
-        .footer__link:hover {
-            color: var(--color-gold);
-        }
-
-        .footer__copyright {
-            color: rgba(255, 255, 255, 0.45);
-            font-size: 0.8rem;
-        }
-
-        /* ============================
-             BACK TO TOP
-             ============================ */
-        .back-to-top {
-            position: fixed;
-            bottom: 28px;
-            right: 28px;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: var(--color-navy);
-            color: var(--color-white);
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow-lg);
-            opacity: 0;
-            transform: translateY(20px);
-            pointer-events: none;
-            transition: all var(--transition-smooth);
-            z-index: 999;
-            font-size: 1.2rem;
-        }
-
-        .back-to-top--visible {
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: auto;
-        }
-
-        .back-to-top:hover {
-            background: var(--color-blue);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .back-to-top:focus-visible {
-            outline: 3px solid var(--color-gold);
-            outline-offset: 3px;
-        }
-
-        /* ============================
-             RESPONSIVE STYLES
-             ============================ */
-
-        /* Tablet */
-        @media (max-width: 1024px) {
-            .hero__inner {
-                grid-template-columns: 1fr;
-                gap: 36px;
-                text-align: center;
-            }
-            .hero__content {
-                max-width: 100%;
-                order: 1;
-            }
-            .hero__subtitle {
-                max-width: 100%;
-                margin-left: auto;
-                margin-right: auto;
-            }
-            .hero__actions {
-                justify-content: center;
-            }
-            .hero__visual {
-                order: 2;
-                max-width: 380px;
-                margin: 0 auto;
-            }
-            .hero__dashboard-card {
-                max-width: 100%;
-            }
-
-            .skills__grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .projects__grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .learning__grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .about__inner {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-            .about__sidebar {
-                position: static;
-            }
-            .contact__cards {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 14px;
-            }
-        }
-
-        /* Mobile */
-        @media (max-width: 768px) {
-            .header__inner {
-                padding: 0 16px;
-            }
-
-            .nav__list {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 280px;
-                height: 100vh;
-                background: var(--color-white);
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 90px 28px 40px;
-                gap: 6px;
-                box-shadow: var(--shadow-xl);
-                transition: right var(--transition-smooth);
-                z-index: 1000;
-                border-left: 1px solid var(--color-light-gray-border);
-            }
-
-            .nav__list--open {
-                right: 0;
-            }
-
-            .nav__link {
-                font-size: 1rem;
-                padding: 12px 16px;
-                width: 100%;
-                border-radius: var(--radius-sm);
-            }
-
-            .nav__link--cta {
-                margin-left: 0;
-                text-align: center;
-                margin-top: 8px;
-            }
-
-            .nav__toggle {
-                display: block;
-            }
-
-            /* Mobile overlay */
-            .nav__overlay {
-                position: fixed;
-                inset: 0;
-                background: rgba(15, 23, 42, 0.4);
-                z-index: 999;
-                opacity: 0;
-                pointer-events: none;
-                transition: opacity var(--transition-smooth);
-            }
-            .nav__overlay--open {
-                opacity: 1;
-                pointer-events: auto;
-            }
-
-            .hero {
-                padding: 40px 0 60px;
-            }
-            .hero__title {
-                font-size: clamp(1.6rem, 6vw, 2.3rem);
-            }
-            .hero__subtitle {
-                font-size: 1rem;
-            }
-            .hero__actions {
-                flex-direction: column;
-                align-items: center;
-            }
-            .btn--lg {
-                width: 100%;
-                justify-content: center;
-                text-align: center;
-            }
-
-            .skills__grid {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-            .projects__grid {
-                grid-template-columns: 1fr;
-                gap: 16px;
-            }
-            .learning__grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 12px;
-            }
-            .about__highlights {
-                grid-template-columns: 1fr 1fr;
-            }
-            .contact__cards {
-                grid-template-columns: 1fr;
-                gap: 12px;
-                max-width: 320px;
-            }
-            .footer__inner {
-                flex-direction: column;
-                text-align: center;
-                gap: 12px;
-            }
-            .footer__links {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 14px;
-            }
-            .section {
-                padding: 56px 0;
-            }
-            .back-to-top {
-                bottom: 20px;
-                right: 16px;
-                width: 40px;
-                height: 40px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .learning__grid {
-                grid-template-columns: 1fr;
-            }
-            .about__highlights {
-                grid-template-columns: 1fr;
-            }
-            .dashboard-card__kpis {
-                grid-template-columns: 1fr;
-                gap: 8px;
-            }
-            .hero__dashboard-card {
-                padding: 18px 14px;
-            }
-            .dashboard-card__chart-placeholder {
-                gap: 5px;
-                height: 50px;
-            }
-            .container {
-                padding: 0 16px;
-            }
-            .logo__text {
-                font-size: 1.3rem;
-            }
-            .section__label {
-                font-size: 0.72rem;
-                padding: 4px 10px;
-            }
-        }
-
-        /* ============================
-             PRINT STYLES
-             ============================ */
-        @media print {
-            .header,
-            .back-to-top,
-            .nav__toggle,
-            .nav__overlay,
-            .footer__links {
-                display: none !important;
-            }
-            body {
-                font-size: 12pt;
-                color: #000;
-                background: #fff;
-            }
-            .hero,
-            .skills,
-            .projects,
-            .learning,
-            .about,
-            .contact {
-                padding: 24px 0;
-                page-break-inside: avoid;
-            }
-            .btn {
-                border: 1px solid #000;
-                background: none !important;
-                color: #000 !important;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Muvandii",
+      "url": "https://muvandii.github.io",
+      "jobTitle": "Data Analyst",
+      "knowsAbout": ["Excel Automation", "Power Query", "Power BI", "Data Cleaning", "Reporting Automation", "DAX", "SQL"],
+      "sameAs": ["https://github.com/muvandii", "https://www.linkedin.com/in/muvandii"]
+    }
+    </script>
 </head>
 <body>
-    <!-- Skip to main content -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- Header -->
+    <!-- ======================= HEADER ======================= -->
     <header class="header" id="header" role="banner">
         <div class="header__inner">
             <a href="#" class="logo" aria-label="Muvandii — Home">
-             <img src="assets/svgs/fullz.png" alt="Muvandii Logo" class="logo__image" width="120" height="80">
+                <img src="assets/svgs/fullz.png" alt="Muvandii Logo" class="logo__image" width="120" height="80">
             </a>
-
             <nav class="nav" role="navigation" aria-label="Main navigation">
                 <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navList" aria-label="Toggle navigation menu">
                     <span class="nav__toggle-bar"></span>
@@ -1644,9 +62,10 @@
         </div>
     </header>
 
-    <!-- Main Content -->
+    <!-- ======================= MAIN ======================= -->
     <main id="main-content">
-        <!-- Hero Section -->
+
+        <!-- Hero -->
         <section class="hero" id="home" aria-labelledby="hero-headline">
             <div class="container">
                 <div class="hero__inner">
@@ -1671,7 +90,17 @@
                                 Download Resume
                             </a>
                         </div>
+                        <div class="hero__tech-strip" aria-label="Tools I work with">
+                            <b>Core toolkit</b>
+                            <span>Excel</span>
+                            <span>Power Query</span>
+                            <span>Power BI</span>
+                            <span>DAX</span>
+                            <span>VBA</span>
+                            <span>SQL</span>
+                        </div>
                     </div>
+
                     <div class="hero__visual" aria-hidden="true">
                         <div class="hero__dashboard-card">
                             <div class="dashboard-card__header">
@@ -1699,16 +128,18 @@
                             </div>
                             <div class="dashboard-card__footer">
                                 <span class="dashboard-card__updated">Updated: Real-time</span>
-                                <span class="dashboard-card__dot" aria-hidden="true"></span>
+                                <span class="dashboard-card__dot"></span>
                             </div>
                         </div>
+                        <span class="hero__float hero__float--one"><span class="hero__float-icon">⚡</span> Automated Workflows</span>
+                        <span class="hero__float hero__float--two"><span class="hero__float-icon">📈</span> Actionable Insights</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Skills Section -->
-        <section class="skills" aria-labelledby="skills-heading">
+        <!-- Skills -->
+        <section class="section" aria-labelledby="skills-heading">
             <div class="container">
                 <div class="section__header">
                     <span class="section__label">Core Competencies</span>
@@ -1717,33 +148,33 @@
                     <p class="section__subtitle">Focused on turning messy data into clear, actionable business intelligence.</p>
                 </div>
                 <div class="skills__grid">
-                    <div class="skill-card">
-                        <div class="skill-card__icon skill-card__icon--excel" aria-hidden="true">📋</div>
+                    <div class="skill-card reveal">
+                        <div class="skill-card__icon" aria-hidden="true">📋</div>
                         <h3 class="skill-card__title">Excel Automation</h3>
                         <p class="skill-card__desc">Building automated workbooks with macros, formulas, and dynamic templates that save hours of manual work.</p>
                     </div>
-                    <div class="skill-card">
-                        <div class="skill-card__icon skill-card__icon--powerquery" aria-hidden="true">🔄</div>
+                    <div class="skill-card reveal" style="--reveal-delay: 60ms">
+                        <div class="skill-card__icon" aria-hidden="true">🔄</div>
                         <h3 class="skill-card__title">Power Query ETL</h3>
                         <p class="skill-card__desc">Extracting, transforming, and loading data from multiple sources into clean, analysis-ready datasets.</p>
                     </div>
-                    <div class="skill-card">
-                        <div class="skill-card__icon skill-card__icon--powerbi" aria-hidden="true">📈</div>
+                    <div class="skill-card reveal" style="--reveal-delay: 120ms">
+                        <div class="skill-card__icon" aria-hidden="true">📈</div>
                         <h3 class="skill-card__title">Power BI Dashboards</h3>
                         <p class="skill-card__desc">Designing interactive dashboards with clear KPIs that help stakeholders make informed decisions quickly.</p>
                     </div>
-                    <div class="skill-card">
-                        <div class="skill-card__icon skill-card__icon--cleaning" aria-hidden="true">🧹</div>
+                    <div class="skill-card reveal" style="--reveal-delay: 0ms">
+                        <div class="skill-card__icon" aria-hidden="true">🧹</div>
                         <h3 class="skill-card__title">Data Cleaning</h3>
                         <p class="skill-card__desc">Identifying and resolving inconsistencies, duplicates, and errors to ensure data accuracy and reliability.</p>
                     </div>
-                    <div class="skill-card">
-                        <div class="skill-card__icon skill-card__icon--reporting" aria-hidden="true">📊</div>
+                    <div class="skill-card reveal" style="--reveal-delay: 60ms">
+                        <div class="skill-card__icon" aria-hidden="true">📊</div>
                         <h3 class="skill-card__title">Reporting Automation</h3>
                         <p class="skill-card__desc">Setting up scheduled, refreshable reports that eliminate repetitive manual reporting tasks.</p>
                     </div>
-                    <div class="skill-card">
-                        <div class="skill-card__icon skill-card__icon--kpi" aria-hidden="true">🎯</div>
+                    <div class="skill-card reveal" style="--reveal-delay: 120ms">
+                        <div class="skill-card__icon" aria-hidden="true">🎯</div>
                         <h3 class="skill-card__title">KPI Tracking</h3>
                         <p class="skill-card__desc">Defining and monitoring key performance indicators that align with business goals and drive action.</p>
                     </div>
@@ -1751,28 +182,22 @@
             </div>
         </section>
 
-        <!-- Featured Projects Section -->
-        <section class="projects" id="projects" aria-labelledby="projects-heading">
+        <!-- Featured Projects -->
+        <section class="section section--alt projects" id="projects" aria-labelledby="projects-heading">
             <div class="container">
                 <div class="section__header">
                     <span class="section__label">Portfolio</span>
                     <h2 class="section__title" id="projects-heading">Featured Projects</h2>
                     <div class="divider" aria-hidden="true"></div>
-                    <p class="section__subtitle">Real-world case studies showcasing automation and dashboard solutions.</p>
+                    <p class="section__subtitle">Real-world case studies, each documented end-to-end in its own GitHub repository.</p>
                 </div>
-                <div class="projects__grid">
-                    <!-- Project 1 -->
-                    <article class="project-card">
-                        <div class="project-card__image-area">
-                            <svg class="project-card__placeholder-icon" width="64" height="64" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-                                <rect x="8" y="16" width="48" height="36" rx="4" stroke="#475569" stroke-width="2" fill="none"/>
-                                <line x1="8" y1="28" x2="56" y2="28" stroke="#475569" stroke-width="1.5"/>
-                                <line x1="20" y1="16" x2="20" y2="52" stroke="#475569" stroke-width="1.5"/>
-                                <line x1="36" y1="16" x2="36" y2="52" stroke="#475569" stroke-width="1.5"/>
-                                <circle cx="28" cy="38" r="4" fill="#F2C811" opacity="0.8"/>
-                                <circle cx="44" cy="44" r="3" fill="#2563EB" opacity="0.7"/>
-                            </svg>
-                            <span class="project-card__coming-soon-badge">Coming Soon</span>
+
+                <div class="projects__grid" id="projectsGrid" aria-live="polite">
+                    <!-- Static fallback (shown only when JavaScript is unavailable);
+                         replaced with live content fetched from each project's repo. -->
+                    <article class="project-card project-card--pending">
+                        <div class="project-card__media project-card__media--placeholder">
+                            <svg class="project-card__pending-icon" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                         </div>
                         <div class="project-card__body">
                             <h3 class="project-card__title">Sales Reporting Automation</h3>
@@ -1782,21 +207,12 @@
                                 <span class="tool-tag">Excel</span>
                                 <span class="tool-tag tool-tag--blue">Power BI</span>
                             </div>
-                            <a href="#" class="project-card__btn" aria-label="View Sales Reporting Automation project (coming soon)">View Project</a>
+                            <div class="project-card__notice">Project cards load automatically from each repository&rsquo;s <code>documentation/project.md</code>. Enable JavaScript to view live case studies.</div>
                         </div>
                     </article>
-
-                    <!-- Project 2 -->
-                    <article class="project-card">
-                        <div class="project-card__image-area">
-                            <svg class="project-card__placeholder-icon" width="64" height="64" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-                                <rect x="10" y="8" width="44" height="48" rx="4" stroke="#475569" stroke-width="2" fill="none"/>
-                                <rect x="16" y="18" width="12" height="28" rx="2" fill="#2563EB" opacity="0.3"/>
-                                <rect x="32" y="24" width="12" height="22" rx="2" fill="#F2C811" opacity="0.5"/>
-                                <rect x="16" y="18" width="12" height="28" rx="2" stroke="#2563EB" stroke-width="1.5" fill="none"/>
-                                <rect x="32" y="24" width="12" height="22" rx="2" stroke="#D4A90D" stroke-width="1.5" fill="none"/>
-                            </svg>
-                            <span class="project-card__coming-soon-badge">Coming Soon</span>
+                    <article class="project-card project-card--pending">
+                        <div class="project-card__media project-card__media--placeholder">
+                            <svg class="project-card__pending-icon" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                         </div>
                         <div class="project-card__body">
                             <h3 class="project-card__title">Inventory Dashboard</h3>
@@ -1806,21 +222,12 @@
                                 <span class="tool-tag">DAX</span>
                                 <span class="tool-tag tool-tag--gold">Power Query</span>
                             </div>
-                            <a href="#" class="project-card__btn" aria-label="View Inventory Dashboard project (coming soon)">View Project</a>
+                            <div class="project-card__notice">Project cards load automatically from each repository&rsquo;s <code>documentation/project.md</code>. Enable JavaScript to view live case studies.</div>
                         </div>
                     </article>
-
-                    <!-- Project 3 -->
-                    <article class="project-card">
-                        <div class="project-card__image-area">
-                            <svg class="project-card__placeholder-icon" width="64" height="64" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-                                <circle cx="32" cy="32" r="22" stroke="#475569" stroke-width="2" fill="none"/>
-                                <circle cx="32" cy="32" r="14" stroke="#475569" stroke-width="1.5" fill="none" stroke-dasharray="4 3"/>
-                                <circle cx="32" cy="32" r="5" fill="#F2C811" opacity="0.8"/>
-                                <line x1="32" y1="18" x2="32" y2="12" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/>
-                                <line x1="44" y1="26" x2="49" y2="22" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                            <span class="project-card__coming-soon-badge">Coming Soon</span>
+                    <article class="project-card project-card--pending">
+                        <div class="project-card__media project-card__media--placeholder">
+                            <svg class="project-card__pending-icon" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                         </div>
                         <div class="project-card__body">
                             <h3 class="project-card__title">Expense Tracker Automation</h3>
@@ -1830,15 +237,15 @@
                                 <span class="tool-tag tool-tag--gold">Power Query</span>
                                 <span class="tool-tag">VBA</span>
                             </div>
-                            <a href="#" class="project-card__btn" aria-label="View Expense Tracker Automation project (coming soon)">View Project</a>
+                            <div class="project-card__notice">Project cards load automatically from each repository&rsquo;s <code>documentation/project.md</code>. Enable JavaScript to view live case studies.</div>
                         </div>
                     </article>
                 </div>
             </div>
         </section>
 
-        <!-- Learning Journey Section -->
-        <section class="learning" aria-labelledby="learning-heading">
+        <!-- Learning Journey -->
+        <section class="section" aria-labelledby="learning-heading">
             <div class="container">
                 <div class="section__header">
                     <span class="section__label">Growth Path</span>
@@ -1847,22 +254,22 @@
                     <p class="section__subtitle">Continuously expanding my analytics toolkit to deliver greater business value.</p>
                 </div>
                 <div class="learning__grid">
-                    <div class="learning-card">
+                    <div class="learning-card reveal">
                         <span class="learning-card__icon" aria-hidden="true">⚡</span>
                         <h3 class="learning-card__title">Advanced Power Query</h3>
                         <span class="learning-card__status">In Progress</span>
                     </div>
-                    <div class="learning-card">
+                    <div class="learning-card reveal" style="--reveal-delay: 60ms">
                         <span class="learning-card__icon" aria-hidden="true">🧮</span>
                         <h3 class="learning-card__title">DAX Fundamentals</h3>
                         <span class="learning-card__status">In Progress</span>
                     </div>
-                    <div class="learning-card">
+                    <div class="learning-card reveal" style="--reveal-delay: 120ms">
                         <span class="learning-card__icon" aria-hidden="true">🗂️</span>
                         <h3 class="learning-card__title">Data Modeling</h3>
                         <span class="learning-card__status">Up Next</span>
                     </div>
-                    <div class="learning-card">
+                    <div class="learning-card reveal" style="--reveal-delay: 180ms">
                         <span class="learning-card__icon" aria-hidden="true">🎨</span>
                         <h3 class="learning-card__title">Dashboard Design</h3>
                         <span class="learning-card__status">Up Next</span>
@@ -1871,8 +278,8 @@
             </div>
         </section>
 
-        <!-- About Section -->
-        <section class="about" id="about" aria-labelledby="about-heading">
+        <!-- About -->
+        <section class="section section--alt about" id="about" aria-labelledby="about-heading">
             <div class="container">
                 <div class="section__header">
                     <span class="section__label">About Me</span>
@@ -1932,8 +339,8 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section class="contact" id="contact" aria-labelledby="contact-heading">
+        <!-- Contact -->
+        <section class="section contact" id="contact" aria-labelledby="contact-heading">
             <div class="container container--narrow">
                 <div class="section__header">
                     <span class="section__label">Get In Touch</span>
@@ -1949,7 +356,7 @@
                         <span class="contact-card__label">LinkedIn</span>
                         <span class="contact-card__value">linkedin.com/in/muvandii</span>
                     </a>
-                    <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="contact-card contact-card--github" aria-label="View Muvandii's GitHub profile">
+                    <a href="https://github.com/muvandii" target="_blank" rel="noopener noreferrer" class="contact-card contact-card--github" aria-label="View Muvandii's GitHub profile">
                         <span class="contact-card__icon" aria-hidden="true">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
                         </span>
@@ -1968,180 +375,26 @@
         </section>
     </main>
 
-    <!-- Footer -->
+    <!-- ======================= FOOTER ======================= -->
     <footer class="footer" role="contentinfo">
         <div class="footer__inner">
-            <span class="footer__logo-text">Muvandii</span>
+            <span class="footer__logo-text">Muvandii<em>.</em></span>
             <div class="footer__links">
                 <a href="#home" class="footer__link">Home</a>
                 <a href="#projects" class="footer__link">Projects</a>
                 <a href="#about" class="footer__link">About</a>
                 <a href="#contact" class="footer__link">Contact</a>
             </div>
-            <span class="footer__copyright">&copy; <time datetime="2026">2026</time> Muvandii. All rights reserved.</span>
+            <span class="footer__copyright">&copy; <time id="footerYear" datetime="2026">2026</time> Muvandii. All rights reserved.</span>
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
+    <!-- Back to Top -->
     <button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
         <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M9.47 6.47a.75.75 0 011.06 0l4.25 4.25a.75.75 0 11-1.06 1.06L10 8.06l-3.72 3.72a.75.75 0 01-1.06-1.06l4.25-4.25z" clip-rule="evenodd"/></svg>
     </button>
 
-    <!-- Scripts -->
-    <script>
-        (function() {
-            // DOM Elements
-            const header = document.getElementById('header');
-            const navToggle = document.getElementById('navToggle');
-            const navList = document.getElementById('navList');
-            const navOverlay = document.getElementById('navOverlay');
-            const backToTop = document.getElementById('backToTop');
-            const navLinks = document.querySelectorAll('.nav__link[data-section]');
-            const allNavLinks = document.querySelectorAll('.nav__link');
-
-            // Mobile menu state
-            let menuOpen = false;
-
-            function openMenu() {
-                menuOpen = true;
-                navList.classList.add('nav__list--open');
-                navOverlay.classList.add('nav__overlay--open');
-                navToggle.classList.add('nav__toggle--open');
-                navToggle.setAttribute('aria-expanded', 'true');
-                document.body.style.overflow = 'hidden';
-            }
-
-            function closeMenu() {
-                menuOpen = false;
-                navList.classList.remove('nav__list--open');
-                navOverlay.classList.remove('nav__overlay--open');
-                navToggle.classList.remove('nav__toggle--open');
-                navToggle.setAttribute('aria-expanded', 'false');
-                document.body.style.overflow = '';
-            }
-
-            function toggleMenu() {
-                if (menuOpen) {
-                    closeMenu();
-                } else {
-                    openMenu();
-                }
-            }
-
-            // Toggle menu on hamburger click
-            navToggle.addEventListener('click', toggleMenu);
-
-            // Close menu on overlay click
-            navOverlay.addEventListener('click', closeMenu);
-
-            // Close menu when a nav link is clicked (mobile)
-            allNavLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    if (menuOpen) {
-                        closeMenu();
-                    }
-                });
-            });
-
-            // Close menu on Escape key
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && menuOpen) {
-                    closeMenu();
-                    navToggle.focus();
-                }
-            });
-
-            // Scroll handling: header shadow, back-to-top visibility, active nav link
-            function handleScroll() {
-                const scrollY = window.scrollY;
-
-                // Header shadow
-                if (scrollY > 10) {
-                    header.classList.add('header--scrolled');
-                } else {
-                    header.classList.remove('header--scrolled');
-                }
-
-                // Back to top button
-                if (scrollY > 500) {
-                    backToTop.classList.add('back-to-top--visible');
-                } else {
-                    backToTop.classList.remove('back-to-top--visible');
-                }
-
-                // Active nav link detection
-                const sections = document.querySelectorAll('section[id]');
-                let currentSection = 'home';
-
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop - 120;
-                    const sectionHeight = section.offsetHeight;
-                    const sectionId = section.getAttribute('id');
-
-                    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-                        currentSection = sectionId;
-                    }
-                });
-
-                navLinks.forEach(link => {
-                    link.classList.remove('nav__link--active');
-                    if (link.getAttribute('data-section') === currentSection) {
-                        link.classList.add('nav__link--active');
-                    }
-                });
-            }
-
-            // Back to top click
-            backToTop.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-
-            // Throttled scroll listener
-            let scrollTimeout;
-            window.addEventListener('scroll', () => {
-                if (!scrollTimeout) {
-                    scrollTimeout = requestAnimationFrame(() => {
-                        handleScroll();
-                        scrollTimeout = null;
-                    });
-                }
-            }, { passive: true });
-
-            // Initial scroll check
-            handleScroll();
-
-            // Focus trap for mobile menu (basic implementation)
-            navList.addEventListener('keydown', (e) => {
-                if (e.key === 'Tab' && menuOpen) {
-                    const focusableElements = navList.querySelectorAll(
-                        'a[href], button:not([disabled])'
-                    );
-                    if (focusableElements.length === 0) return;
-
-                    const firstFocusable = focusableElements[0];
-                    const lastFocusable = focusableElements[focusableElements.length - 1];
-
-                    if (e.shiftKey && document.activeElement === firstFocusable) {
-                        e.preventDefault();
-                        lastFocusable.focus();
-                    } else if (!e.shiftKey && document.activeElement === lastFocusable) {
-                        e.preventDefault();
-                        firstFocusable.focus();
-                    }
-                }
-            });
-
-            // Trap focus in mobile menu when it opens
-            if (menuOpen && navList.querySelector('a')) {
-                navList.querySelector('a').focus();
-            }
-
-            console.log('%c👋 Hello! Thanks for checking out Muvandii\'s portfolio.',
-                'color: #2563EB; font-size: 1.1rem; font-weight: bold;');
-            console.log('%cBuilt with clean HTML, CSS & JavaScript — ready for GitHub Pages deployment.',
-                'color: #475569; font-size: 0.9rem;');
-            console.log('%c📊 Excel • Power Query • Power BI', 'color: #F2C811; font-weight: 600;');
-        })();
-    </script>
+    <script src="assets/js/site.js"></script>
+    <script src="assets/js/index.js"></script>
 </body>
 </html>
