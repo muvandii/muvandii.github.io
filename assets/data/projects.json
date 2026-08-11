@@ -4,13 +4,13 @@
   "defaultBranch": "main",
   "projects": [
     {
-      "id": "sales-reporting-automation",
-      "repo": "project-01-sales-reporting-automation",
+      "id": "sales-reporting-consolidation",
+      "repo": "Project_01_Retail_Sales_Consolidation",
       "branch": "main",
-      "title": "Sales Reporting Automation",
-      "category": "Data Analytics",
+      "title": "Multistore retail sales consolidation",
+      "category": "Data Extraction ransformatin and Loading",
       "summary": "Automated monthly sales reports using Power Query to consolidate data from multiple regional spreadsheets into a single refreshable dashboard.",
-      "technologies": ["Power Query", "Excel", "Power BI"]
+      "technologies": ["Power Query", "Excel", "M"]
     },
     {
       "id": "inventory-dashboard",
